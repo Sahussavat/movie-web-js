@@ -1,0 +1,27 @@
+
+.navbar-nav .nav-link.active{
+  color: #578FCA;  
+}
+.navbar-nav .nav-link:hover {
+  color: #A1E3F9;
+}
+
+.fade-in{
+  opacity: 0;
+  animation: fade-in linear forwards;
+  animation-timeline: view();
+  animation-range: entry 150px;
+}
+
+.fade-in-left{
+  opacity: 0;
+  animation: ld-float-ltr-in linear forwards;
+  animation-timeline: scroll();
+  animation-range: entry;
+}
+
+@keyframes fade-in {
+  to{
+    opacity: 1;
+  }
+}

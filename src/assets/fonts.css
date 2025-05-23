@@ -1,0 +1,11 @@
+@font-face {
+    font-family: noto;
+    src: url(./fonts/NotoSansThai-Black.ttf);
+  }
+
+  @font-face {
+    font-family: noto-regular;
+    src: url(./fonts/NotoSansThai-Regular.ttf);
+  }
+
+  
