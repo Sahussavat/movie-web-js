@@ -23,10 +23,10 @@ const header_links = [
         <!-- Left links -->
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/" style="font-family: noto-regular; font-size: 20px; color: #8bc819;">หน้าหลัก</a>
+            <a class="nav-link" aria-current="page" href="#/" style="font-family: noto-regular; font-size: 20px; color: #8bc819;">หน้าหลัก</a>
           </li>
           <li class="nav-item" v-for="h in header_links">
-            <a class="nav-link" aria-current="page" :href="'/catalogue?movietype=' + h.name" style="font-family: noto-regular; font-size: 20px; color: #8bc819;">{{ h.name }}</a>
+            <a class="nav-link" aria-current="page" :href="'#/catalogue?movietype=' + h.name" style="font-family: noto-regular; font-size: 20px; color: #8bc819;">{{ h.name }}</a>
           </li>
         </ul>
         <!-- Left links -->
@@ -57,3 +57,21 @@ a:active {
       text-decoration: none;
 }
 </style>
+
+<script>
+import { watch } from 'vue'
+export default {
+  methods:{
+    to_page(string){
+
+    }
+  },
+  created(){
+    watch(
+            ()=> this.$route.query.search, ()=>{
+                location.reload(true);
+            }
+        )
+  }
+}
+</script>

@@ -20,7 +20,7 @@ import { VueperSlides, VueperSlide } from 'vueperslides'
         <vueper-slide v-for="(item, index) in slides" :key="index" :style="'background-color: transparent;'">
         <template #content>
         <div class="vueperslide__content-wrapper" style="">
-          <a :href="'/videoplay?id=' + item.id + get_series_string(item)">
+          <a :href="'#/videoplay?id=' + item.id + get_series_string(item)">
             <div>
             <img :src=item.pic_src draggable="false" class="rounded shadow loaded other-vid-img" alt="..." style="display: none;">
             </div>
@@ -80,6 +80,7 @@ export default {
   }
   .other-vid-img{
     width: 90%;
+    height: 200px;
   }
 
 }
@@ -90,6 +91,7 @@ export default {
   }
   .other-vid-img{
     width: 90%;
+    height: 350px;
   }
 }
 </style>

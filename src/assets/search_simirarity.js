@@ -29,9 +29,10 @@ export function search(qt_arr, data, except_id){
         }
         return b[0] - a[0]
     })
+    
     var temp_arr2 = []
     for(let i=0;i<temp_arr.length;i++){
-        if(max_most_v * 0.8 < temp_arr[i][0]){
+        if(max_most_v * 0.8 < temp_arr[i][0] && temp_arr[i][0] > 2){
             if(except_id != temp_arr[i][1].id){
                 temp_arr2.push(temp_arr[i][1])
             }

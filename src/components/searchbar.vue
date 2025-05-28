@@ -5,7 +5,7 @@ import { ref } from 'vue';
 <template>
        <div class="input-group">
           <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Search" :value="this.$route.query.search" @keyup.enter="this.do_search()" />
+            <input type="search" id="form1" class="form-control" placeholder="Search" :value="$route.query.search" @keyup.enter="this.do_search()" />
           </div>
           <button type="button" class="btn btn-primary" v-on:click="this.do_search()" style="background-color: #8bc819; border-color: #8bc819;">
            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 20 20">
@@ -21,7 +21,7 @@ export default {
         do_search(){
             let val = document.getElementById('form1').value
             if (val){
-                window.location.href = '/catalogue?search=' + val
+                window.location.href = '#/catalogue?search=' + val
             }
         }
     }

@@ -2,7 +2,7 @@
   <div>
     <video preload="auto"
     data-setup="{}" ref="videoPlayer" class="video-js"></video>
-  </div>
+    </div>
 </template>
 
 <script>

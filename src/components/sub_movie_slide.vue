@@ -7,7 +7,7 @@ import { test_data } from '../assets/test_data';
 <template>    
     <div class="shadow" style="background-color: #000000;">
 <div align="left" class="fade-in" style="padding-top: 2%; margin-left: 10%;">
-        <a :href="'/catalogue?movietype=' + movie_type"><p class="title-name" style="font-family: noto; color: #8bc819;">{{movie_type}}</p></a>
+        <a :href="'#/catalogue?movietype=' + movie_type"><p class="title-name" style="font-family: noto; color: #8bc819;">{{movie_type}}</p></a>
     </div>
     <div style='margin-left: 5%; margin-right: 5%;'>
     <vueper-slides class="no-shadow fade-in"
@@ -21,7 +21,7 @@ import { test_data } from '../assets/test_data';
         <vueper-slide v-for="(item, index) in slides" :key="index" :style="'background-color: transparent;'">
         <template #content>
         <div class="vueperslide__content-wrapper" style="">
-          <a :href="'/videoplay?id=' + item.id + get_series_string(item)">
+          <a :href="'#/videoplay?id=' + item.id + get_series_string(item)">
             <div>
             <img :src=item.pic_src draggable="false" class="rounded shadow loaded img-sub-movie" alt="..." style="display: none; ">
             </div>
@@ -69,6 +69,7 @@ export default {
   }
   .img-sub-movie {
     width: 90%;
+    height: 200px;
   }
 
 }
@@ -79,7 +80,7 @@ export default {
   }
   .img-sub-movie{
     width: 90%;
+    height: 350px;
   }
-
 }
 </style>

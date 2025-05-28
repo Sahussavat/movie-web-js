@@ -26,7 +26,7 @@ import { VueperSlides, VueperSlide } from 'vueperslides'
                         <div class="movie-main-dsec" style="font-family: noto; color: #ffffff; word-wrap: break-word;">
                             {{item.dsec}}</div>
                             <br>
-                            <button type="button" class="btn btn-danger rounded shadow" style="background-color: #8bc819; border-color: #8bc819;" v-on:click="this.$router.push( '/videoplay?id=' + item.id + get_series_string(item))">Watch</button>
+                            <button type="button" class="btn btn-danger rounded shadow" style="background-color: #8bc819; border-color: #8bc819;" v-on:click="$router.push( '/videoplay?id=' + item.id + get_series_string(item))">Watch</button>
                     </div>
                 </div>
                 <div class="col" style="width: 50%;">
@@ -45,6 +45,7 @@ import { VueperSlides, VueperSlide } from 'vueperslides'
 <script>
 import { search } from '../assets/search_simirarity';
 import { test_data } from '../assets/test_data';
+
 export default {
     props: {
         movie_type: {
@@ -58,7 +59,7 @@ export default {
             return "&ep=1&season=1"
             }
             return ""
-        }
+        },
     },
     created(){
       this.slides = search(["hot"], test_data)

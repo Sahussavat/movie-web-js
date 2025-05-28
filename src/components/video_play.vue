@@ -31,8 +31,8 @@ import MainPage from './mainpage.vue';
                 </div>
             </div>
             <div>
-              <div class="vid-series-title" v-if="this.item.series && this.item.series.length > 0">
-              <p style="font-family: noto; color: #000000; font-size: 20px;">ซีซั่น {{ this.$route.query.season }} ตอนที่ {{this.$route.query.ep}}</p>
+              <div class="vid-series-title" v-if="item.series && item.series.length > 0">
+              <p style="font-family: noto; color: #000000; font-size: 20px;">ซีซั่น {{ season }} ตอนที่ {{ ep }}</p>
               </div>
             </div>
             <div>
@@ -42,7 +42,7 @@ import MainPage from './mainpage.vue';
                     sources: [
                       {
                         src:
-                          'https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_30mb.mp4',
+                          'https://drive.usercontent.google.com/download?id=1Th4K0F5gmK461ncwaUlfqNN7O4i8UfWL&export=preview&authuser=0',
                           type: 'video/mp4'
                       }
                     ]
@@ -50,11 +50,11 @@ import MainPage from './mainpage.vue';
             </div>
         </div>
         </div>
-        <div v-if="this.item.series && this.item.series.length > 0">
+        <div v-if="item.series && item.series.length > 0">
         <div style="margin-left: 5%; margin-right: 5%;">
           <select id="season-select" class="form-select" style="font-family: noto-regular; color: #8bc819; background-color: #000000; border-color: #000000; font-size: 20px;" v-on:change="show_eps($event.target.value)">
             <option selected value="1">ซีซั่น 1</option>
-            <option :value="i + 1" v-for="i in this.item.series.length - 1">ซีซั่น {{ i + 1 }}</option>
+            <option :value="i + 1" v-for="i in item.series.length - 1">ซีซั่น {{ i + 1 }}</option>
           </select>
         </div>
         <div class="shadow rounded overflow-auto" id="scrollable-div" style="margin: 5%; background-color: #000000;">
@@ -76,6 +76,7 @@ import MainPage from './mainpage.vue';
 <script>
 import VideoPlayer from './video.vue';
 import { test_data } from '../assets/test_data';
+import { watch } from 'vue'
 
 export default {
   components: {
@@ -105,7 +106,7 @@ export default {
         document.getElementById('ep_box').innerHTML = document.getElementById('ep_box').innerHTML + 
         `<div class="col rounded" id="${focus_here}" style="max-height: 300px; 
         display: inline-flex; margin-bottom:2%; margin-top:2%; width: 100%; background-color: ${bg_color};">
-            <a href="/videoplay?id=${this.$route.query.id}&ep=${i + 1}&season=${season_i}" style="display: inline-flex;">
+            <a href="#/videoplay?id=${this.$route.query.id}&ep=${i + 1}&season=${season_i}" style="display: inline-flex;">
               <img class="shadow rounded" src="${ep.pic_src}" style="max-height: 200px;">
               <div style="width: 50%; margin-left: 5%;">
                   <br>
@@ -120,11 +121,28 @@ export default {
   },
   created(){
     this.item = this.get_movie_by_id(this.$route.query.id)
-  },
-  mounted(){
     if(this.item.series && this.item.series.length > 0){
       this.ep = this.$route.query.ep
       this.season = this.$route.query.season
+    }
+    watch(
+        ()=> this.$route.query.id, ()=>{
+            location.reload(true);
+        }
+    )
+    watch(
+        ()=> this.$route.query.ep, ()=>{
+            location.reload(true);
+        }
+    )
+    watch(
+        ()=> this.$route.query.season, ()=>{
+            location.reload(true);
+        }
+    )
+  },
+  mounted(){
+    if(this.item.series && this.item.series.length > 0){
       document.getElementById('season-select').value = this.season
       this.show_eps(this.season)
       setTimeout(function(){
